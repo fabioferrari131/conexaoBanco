@@ -8,11 +8,13 @@ import java.util.logging.Logger;
 
 public class ClienteController {
 
-    public boolean inserir() {
-        String sql = "INSERT INTO cliente(codigo,nome) VALUES (13,'Fabio')";
-        PreparedStatement ps;
+    public boolean inserir(int codigo, String nome) {
+        String sql = "INSERT INTO cliente(codigo,nome) VALUES (?,?)";//define instrução sql
+        PreparedStatement ps;//executa sql preparada
         try {
-            ps = Conexao.getConexao().prepareStatement(sql);
+            ps = Conexao.getConexao().prepareStatement(sql);//prepara instrução sql
+            ps.setInt(1, codigo);//primeiro parâmetro indica ? correspondente, subtituira a 1ª variavel
+            ps.setString(2, nome);//primeiro parâmetro indica ? correspondente, subtituira a 2ª variavel
             ps.execute();
             return true;
         } catch (SQLException  | ClassNotFoundException ex){
@@ -25,7 +27,7 @@ public class ClienteController {
         ClienteController objCliente = new ClienteController();
         
         // chame o metodo inserir desse objeto
-        objCliente.inserir();
+        objCliente.inserir(12, "Ferrari");
         
         //execute e confira no BD
     }
