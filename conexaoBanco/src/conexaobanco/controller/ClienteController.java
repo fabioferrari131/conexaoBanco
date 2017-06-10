@@ -27,7 +27,7 @@ public class ClienteController {
         ClienteController objCliente = new ClienteController();
         
         // chame o metodo inserir desse objeto
-        objCliente.inserir(12, "Ferrari");
+        objCliente.inserir(123, "Ferrari");
         
         //execute e confira no BD
     }
